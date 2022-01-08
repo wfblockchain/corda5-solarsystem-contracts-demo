@@ -1,0 +1,1 @@
+corda-cli network deploy -n solar-system -f ../solar-system.yaml > docker-compose.yaml

@@ -1,0 +1,1 @@
+corda-cli network status -n solar-system

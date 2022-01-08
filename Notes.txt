@@ -1,0 +1,80 @@
+
+
+1. Get the code at https://github.com/corda/corda5-solarsystem-contracts-demo
+2. Required tools
+2.1. JDK 11
+2.2 Kotlin 1.4
+2.3 Docker and Docker Composer
+2.4 Corda CLI - https://docs.r3.com/en/platform/corda/5.0-dev-preview-1/corda-cli/installing-corda-cli.html
+2.5 Cordapp Builder CLI - https://docs.r3.com/en/platform/corda/5.0-dev-preview-1/packaging/cordapp-builder.html
+2.6 Corda Node CLI - https://docs.r3.com/en/platform/corda/5.0-dev-preview-1/nodes/operating/cli-curl/cli-curl.html
+
+
+Documentation for Corda 5
+https://docs.r3.com/en/platform/corda/5.0-dev-preview-1/tutorials/run-demo-cordapp.html
+https://docs.r3.com/en/platform/corda/5.0-dev-preview-1.html
+
+after gradlew build do the following
+
+1. ./cordappBuilder.sh
+2. ./networkConfig.sh
+3. ./buildNetwork.sh
+4. ./deploy.sh
+5. ./status.sh
+6. ./installCordapp.sh
+
+Network solar-system status:
+         with type: docker-compose
+         has started and has nodes:
+                 service earth: Ready
+                         solar-system-earth (505870045c3a)
+                         x500 name: C=IE, L=THIRD, O=EARTH, OU=PLANET
+                         Node Role: Corda Node
+                         Ports:
+                                HTTP RPC port: 12112
+                                Node agent port: 12113
+                                Debug port: 12114
+                         Deployed CPBs:
+                                (solar-system.cpb, {size=253274, date=Jan 8, 2022, 12:18:01 AM, cpb={valid=true}})
+                 service bootstrapper: Ready
+                         solar-system-bootstrapper (6565704a2d48)
+                 service mars: Ready
+                         solar-system-mars (7da27b34cfbb)
+                         x500 name: C=GB, L=FOURTH, O=MARS, OU=PLANET
+                         Node Role: Corda Node
+                         Ports:
+                                HTTP RPC port: 12116
+                                Node agent port: 12117
+                                Debug Disabled
+                         Deployed CPBs:
+                                (solar-system.cpb, {size=253274, date=Jan 8, 2022, 12:18:01 AM, cpb={valid=true}})
+                 service pluto: Ready
+                         solar-system-pluto (d7430459dd58)
+                         x500 name: C=US, L=NINTH, O=PLUTO, OU=DWARF_PLANET
+                         Node Role: Corda Node
+                         Ports:
+                                HTTP RPC port: 12119
+                                Node agent port: 12120
+                                Debug Disabled
+                         Deployed CPBs:
+                                (solar-system.cpb, {size=253274, date=Jan 8, 2022, 12:17:59 AM, cpb={valid=true}})
+                 service notary: Starting
+                         solar-system-notary (f5afe67b428d)
+                         x500 name: O=notary, L=London, C=GB
+                         Node Role: Notary
+                         Ports:
+                                HTTP RPC port: 12122
+                                Node agent port: 12123
+                                Debug Disabled
+                         Startup stage: corda.jar failed
+                         Deployed CPBs:
+                                (solar-system.cpb, {size=253274, date=Jan 8, 2022, 12:17:20 AM, cpb={valid=true}})
+
+
+Corda 5 Changes
+- Modular API - includes/excludes what is needed
+- Flexible client - no dependency on JVM - RPC is JSON Based over https
+- FlowLogic, ServiceHub is out and being replaced by @CordaInject
+- Usage of Corda Packages for distributing Cordapps (.cpk and .cpb)
+
+Debuging info at ~/.corda/{network-name}/docker_compose/tmp/PartyA
